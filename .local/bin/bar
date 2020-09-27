@@ -1,0 +1,110 @@
+#!/bin/sh
+# My config depends on
+# lemonbar (for lemonbar)
+# mpc (for mpd module)
+# amixer (for volume module)
+# xrandr (for calculating)
+# bosheniewiem
+
+H=42
+Y=20
+W=400
+X=20
+FG="#ffffff"
+BG="#000000"
+FONT="kiwi:pixelsize=12"
+FONT2="waffle:pixelsize=12"
+NAME="lemonbar"
+FIFO="/tmp/lemonbar.fifo"
+VOL_FULL="%{F#82a0bf}"
+VOL_EMPTY=""
+VOL_INDICATOR="%{F#D4D8E9}"
+BAT_DIR=/sys/class/power_supply/BAT1
+
+COLOR4="%{F$(xrdb -q | grep "color4:" | awk '{ print $2 }')}"
+
+# Calculating Offset-X
+#monitors="$(xrandr | sed -n 's/[0-9]\{2\}\.[0-9]\{2\}\*\+//p' | awk '{print $1}' | sed 's/x[0-9]*$//')"
+#for mon_x_res in $monitors; do
+#    X="$((((mon_x_res-W)/2)))"
+#done
+
+# ram
+get_ram() {
+    printf '%s\n' "${COLOR4}%{F-}%{O2}$(free -mh | awk 'NR == 2 { print $3 " / " $2 }')"
+}
+
+# clock
+get_clock() {
+    printf '%s\n' "${COLOR4}%{F-}%{O2}$(date '+%a %d %B') at $(date '+%H:%M')"
+}
+
+# volume
+get_volume() {
+    if amixer get Master | grep -q '\[off\]'; then
+       vol="Muted" 
+    else
+        vol=$(amixer get Master | awk -F"[][%]" '$0~/%/ { print $2; exit }')
+    fi
+    printf '%s\n' "${COLOR4}%{F-}%{O2}${vol}"
+}
+
+# mpd
+get_music() {
+    current="$(mpc current)"
+    [ -z "$(mpc current)" ] || 
+        if [ "${#current}" -gt 40 ]; then
+            current="${COLOR4}%{F-}%{O2}$(printf '%.40s' "${current}")..."
+        else
+            current="${COLOR4}%{F-}%{O2}$(printf '%.40s' "${current}")"
+        fi
+
+    stat="$(mpc status | awk 'NR == 2 { print $1 }')" ; stat=${stat#?} ; stat=${stat%?}
+    toggle() {
+        [ "${stat}" = 'playing' ] &&
+            buttonToggle="%{A:mpc toggle:}%{A}" ||
+            buttonToggle="%{A:mpc toggle:}%{A}"
+    }
+    toggle
+    buttons="%{A:mpc prev:}%{A}${buttonToggle}%{A:mpc next:}%{A}"
+    out="${COLOR4}${buttons}%{F-}%{O4}${current}"
+    printf '%s\n' "${out}"
+}
+
+# battery
+#get_battery() {
+#    read -r sta < $BAT_DIR/status 
+#    read -r cap < $BAT_DIR/capacity
+#
+#    [ "${cap}" = '100' ] && 
+#        printf '%s\n' "${COLOR4}%{F-}%{O2}FULL" ||
+#        if [ -z ${cap} ]; then
+#            printf '%s\n'"${COLOR4}%{F-}%{O2}NO BATTERY"
+#        elif [ "${sta}" = 'Charging' ]; then
+#            printf '%s\n' "${COLOR4}%{O-2}%{O2}%{F-}${cap}"
+#        else
+#            printf '%s\n' "${COLOR4}%{F-}%{O2}${cap}"
+#        fi
+#} 
+
+# Output
+get_output() {
+    printf "%s\n" "%{c}%{O15}$(get_music)%{O15}$(get_clock)%{O15}$(get_ram)%{O15}$(get_volume)%{O15}"
+}
+
+while :; do
+    get_output
+    sleep 1
+done | \
+
+lemonbar \
+-g "${W}x${H}+${X}+${Y}" \
+-o -1 \
+-f "${FONT}" \
+-o +1 \
+-f "${FONT2}" \
+-B "${BG}" \
+-F "${FG}" \
+-n "${NAME}" \
+| sh &
+

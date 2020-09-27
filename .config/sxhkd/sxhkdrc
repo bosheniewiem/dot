@@ -1,0 +1,32 @@
+alt + d
+    lau
+
+alt + Return
+    $TERMINAL
+
+alt + {minus,equal}
+    {xbacklight -dec 10,xbacklight -inc 10}
+
+alt + ctrl + s
+    ss
+
+alt + ctrl + r
+    blaze
+
+alt + ctrl + w
+    blaze -s
+
+alt + {t,s,f}
+    bspc node -t {\~tiled,\~floating,\~fullscreen}
+
+alt + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+alt + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+
+alt + r
+    bspc wm -r
+
+alt + shift + q
+    bspc node -k

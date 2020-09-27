@@ -1,0 +1,2 @@
+#!/bin/sh
+dmenu_run -c -l 10 -h 22

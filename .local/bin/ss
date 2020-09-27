@@ -1,0 +1,6 @@
+#!/bin/sh
+## Taking screenshots
+file=$(date +"%y.%m.%d_%H:%M:%S").png
+echo " " | xclip -sel clip
+maim $1 "$HOME/pic/$file" | xclip -sel clip -t image/png && \
+notify-send "Screenshot taken" "copied to clipboard and saved as $file"

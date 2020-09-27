@@ -1,0 +1,21 @@
+# shadows
+shadow           =  true ;
+shadow-radius    =  0    ;
+shadow-offset-x  =  10   ;
+shadow-offset-y  =  10   ;
+shadow-opacity   =  0.50 ;
+fading           =  true ;
+fade-delta       =  0.1  ;
+fade-in-step     =  0.07 ;
+fade-out-step    =  0.07 ;
+backend          = "glx" ;
+vsync            = true  ;
+
+shadow-exclude   = [
+    "class_g = 'slop'",
+#    "name = 'lemonbar'",
+#    "class_g = 'dwm'",
+    "class_g = 'Conky'",
+	"_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
+]
+

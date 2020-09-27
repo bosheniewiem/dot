@@ -1,0 +1,30 @@
+! URxvt
+URxvt.font:             xft:kiwi:pixelsize=12
+URxvt.scrollBar:        false
+URxvt.termName:         xterm-256color
+URxvt.geometry:         121x25
+URxvt.letterSpace:      1
+URxvt.print-pipe:       "cat > /dev/null"
+URxvt.iso14755:         false
+URxvt.iso14755_52:      false
+URxvt.internalBorder:   30
+URxvt.clipboard.autocopy: true
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.perl-lib: /usr/lib/urxvt/perl
+URxvt.perl-ext: default,matcher,clipboard,url-select,keyboard-select,resize-font
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+! dmenu
+dmenu.font:             kiwi:pixelsize=12
+dmenu.background:       #000000
+dmenu.foreground:       #ffffff
+dmenu.selbackground:    #ffffff
+dmenu.selforeground:    #000000
+
+! st
+st.termname:            xterm
+st.borderpx:            15
+st.font:                kiwi:pixelsize=12
+
+! colors
+#include "colors/mono"
