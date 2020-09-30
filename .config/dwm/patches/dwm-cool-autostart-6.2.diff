@@ -1,0 +1,63 @@
+diff --git a/config.def.h b/config.def.h
+index 1c0b587..83f5275 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -18,6 +18,10 @@ static const char *colors[][3]      = {
+ 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+ };
+ 
++static char* const autostart[][2] = { /* please replace 2 with maximum number of arguments from autostart array */
++    { "st", NULL },
++};
++
+ /* tagging */
+ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+ 
+diff --git a/dwm.c b/dwm.c
+index 4465af1..59836d7 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -233,6 +233,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
+ static int xerrordummy(Display *dpy, XErrorEvent *ee);
+ static int xerrorstart(Display *dpy, XErrorEvent *ee);
+ static void zoom(const Arg *arg);
++static void autostart_exec();
+ 
+ /* variables */
+ static const char broken[] = "broken";
+@@ -274,6 +275,23 @@ static Window root, wmcheckwin;
+ /* compile-time check if all tags fit into an unsigned int bit array. */
+ struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
+ 
++/* dwm will keep pid's of processes from autostart array and kill them at quit */
++static pid_t *autostart_pids;
++static int autostart_len = LENGTH(autostart);
++
++/* execute command from autostart array */
++static void
++autostart_exec() {
++    autostart_pids = malloc((autostart_len + 1) * sizeof(pid_t));
++    for (int i = 0;i < autostart_len;i++) {
++        autostart_pids[i] = fork();
++        if (autostart_pids[i] == 0) {
++            setsid();
++            execvp(autostart[i][0], autostart[i]);
++        }
++    }
++}
++
+ /* function implementations */
+ void
+ applyrules(Client *c)
+@@ -1248,6 +1266,11 @@ propertynotify(XEvent *e)
+ void
+ quit(const Arg *arg)
+ {
++    /* kill child processes */
++    for (int i = 0;i < autostart_len;i++) {
++        kill(autostart_pids[i], SIGTERM);
++        waitpid(autostart_pids[i], NULL, 0);
++    }
+ 	running = 0;
+ }
+ 
