@@ -40,17 +40,12 @@ $ git clone https://github.com/drscream/lemonbar-xft.git
 $ fc-cache -fv
 ```
 
-## 9. Update dirs
-```
-$ xdg-user-dirs-update
-```
-
-## 10. Install oh-my-zsh
+## 9. Install oh-my-zsh
 ```
 https://github.com/ohmyzsh/ohmyzsh
 ```
 
-## 11. Delete github repo files from ~
+## 10. Delete github repo files from ~
 
 # Everything is done
 ## Commiting

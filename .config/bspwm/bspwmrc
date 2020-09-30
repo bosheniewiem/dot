@@ -8,10 +8,10 @@ bspc monitor -d one two three four
 bspc config pointer_modifier mod1
 
 ## Pudding
-bspc config right_padding 62
+bspc config right_padding 20
 bspc config left_padding 20
 bspc config bottom_padding 20
-bspc config top_padding 20
+bspc config top_padding 80
 bspc config windows_gap 20
 
 ## Borders

@@ -1,6 +1,6 @@
 #!/bin/sh
 # xinitrc
-xrdb "$XRESOURCES"
+xrdb "$XRESOURCES" 
 sxhkd & 
 dunst &
 compton --config "$XDG_CONFIG_HOME/compositor/config" &
@@ -9,9 +9,10 @@ xsetroot -cursor_name left_ptr &
 start-pulseaudio-x11 &
 setxkbmap pl &
 xset b off &
-xser r rate 200 25 &
+xset r rate 200 25 &
 redshift -P -O 4700k &
 mpd &
 bar &
-notify-send "Welcome $(whoami)!"
-exec bspwm
+notify-send "Welcome $(whoami)!" &
+#exec bspwm
+exec herbstluftwm
