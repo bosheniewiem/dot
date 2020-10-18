@@ -1,8 +1,8 @@
 # Installation
 ## 1. Install packages
 ```
-$ sudo apt install redshift dhcpcd5 lxappearance gcc libnotify-bin make ffmpeg xorg xinit x11-xserver-utils mpd mpc ncmpcpp iwd feh htop maim xclip alsa-utils pulseaudio pavucontrol rxvt-unicode curl git bspwm sxhkd neovim zsh xbacklight dunst compton
-```
+$ sudo xbps-install xorg xinit nvidia iwd zsh pulseaudio alsa-utils feh rxvt-unicode bspwm sxhkd openbox dunst libnotify neovim void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree lxappearance lxappearance-obconf redshift firefox xtools 
+``
 
 ## 2. Clone repo
 ```
@@ -17,35 +17,30 @@ $ dots checkout -f
 $ chsh -s /usr/bin/zsh
 ```
 
-## 4. Install dmenu
-```
-$ git clone https://github.com/bosheniewiem/dmenu.git
-```
-
-## 5. Install doas
-```
-$ git clone https://github.com/slicer69/doas.git 
-```
-
-## 6. Install lemonbar
+## 4. Install lemonbar
 ```
 $ git clone https://github.com/drscream/lemonbar-xft.git
 ```
 
-## 7. Wallpapers
-[Wallpaper Collector mega.nz](https://mega.nz/folder/PpohCIpT#tII4Q60AFpgfnEYFywwlow)
-
-## 8. Reload fonts
+## 5. Reload fonts
 ```
 $ fc-cache -fv
 ```
 
-## 9. Install oh-my-zsh
+## 6. Install oh-my-zsh
 ```
-https://github.com/ohmyzsh/ohmyzsh
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-## 10. Delete github repo files from ~
+## 7. Build picom
+```
+https://github.com/ibhagwan/picom
+https://github.com/ibhagwan/picom-ibhagwan-template - for void users
+```
+
+## 8. Build dmenu from ~/.config/dmenu
+
+## 9. remove xorg-fonts (void users cuz of ugly firefox fonts rendering)
 
 # Everything is done
 ## Commiting

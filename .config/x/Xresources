@@ -16,10 +16,10 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
 ! dmenu
 dmenu.font:             kiwi:pixelsize=12
-dmenu.background:       #000000
-dmenu.foreground:       #ffffff
-dmenu.selbackground:    #ffffff
-dmenu.selforeground:    #000000
+dmenu.background:       #14171a
+dmenu.foreground:       #dfdfdf
+dmenu.selbackground:    #82a0bf
+dmenu.selforeground:    #dfdfdf
 
 ! st
 st.termname:            xterm
@@ -27,4 +27,4 @@ st.borderpx:            15
 st.font:                kiwi:pixelsize=12
 
 ! colors
-#include "colors/mono"
+#include "colors/cookie"

@@ -8,7 +8,7 @@
     show_indicators = yes
     separator_height = 0
     ignore_newline = no
-    geometry = "215x10-20-20"
+    geometry = "250x10-20-20"
     transparency = 0
     monitor = 0
     follow = none 
@@ -27,7 +27,7 @@
 
 [frame]
     width = 5
-    color = "#FFFFFF"
+    color = "#82a0bf"
  
 [shortcuts]
     close = ctrl+space
@@ -41,13 +41,13 @@
 #    timeout = 5
  
 [urgency_normal]
-   background = "#000000"
-   foreground = "#FFFFFF"
+   background = "#14171a"
+   foreground = "#dfdfdf"
     timeout = 5
  
 [urgency_critical]
-   background = "#000000"
-   foreground = "#FFFFFF"
+   background = "#181d22"
+   foreground = "#dfdfdf"
     timeout = 5
  
 
