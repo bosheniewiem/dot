@@ -1,1 +1,1 @@
-![](showcase.png)
+![](resource.png)

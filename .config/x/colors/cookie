@@ -1,0 +1,41 @@
+! special
+*.foreground:   #dfdfdf
+*.background:   #14171a
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #14171a
+*.color8:       #181d22
+
+! red
+*.color1:       #cc6872
+*.color9:       #cc6872
+
+! green
+*.color2:       #a7c58e
+*.color10:      #a7c58e
+
+! yellow
+*.color3:       #ebcb8b
+*.color11:      #ebcb8b
+
+! blue
+*.color4:       #82a0bf
+*.color12:      #82a0bf
+
+! magenta
+*.color5:       #c69abf
+*.color13:      #c69abf
+
+! cyan
+*.color6:       #93c5bc
+*.color14:      #93c5bc
+
+! white
+*.color7:       #d1d1d1
+*.color15:      #dfdfdf
+
+*.color16:      #82a0bf
+*.color17:      #D4D8E9
+
+*.wallpaper:    tile.jpg
