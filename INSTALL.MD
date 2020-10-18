@@ -2,7 +2,11 @@
 ## 1. Install packages
 ```
 $ sudo xbps-install xorg xinit nvidia iwd zsh pulseaudio alsa-utils feh rxvt-unicode bspwm sxhkd openbox dunst libnotify neovim void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree lxappearance lxappearance-obconf redshift firefox xtools 
+<<<<<<< HEAD
 ```
+=======
+``
+>>>>>>> 8771b5951692ba20c232b6030e5973382854844f
 
 ## 2. Clone repo
 ```
