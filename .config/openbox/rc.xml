@@ -253,7 +253,7 @@
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>urxvt</command>
+        <command>alacritty</command>
       </action>
     </keybind>
     <keybind key="W-k">
@@ -271,17 +271,17 @@
         <command>ss -s</command>
       </action>
     </keybind>
-    <keybind key="F3">
+    <keybind key="W-F3">
       <action name="Execute">
         <command>pactl set-sink-volume @DEFAULT_SINK@ +1%</command>
       </action>
     </keybind>
-    <keybind key="F2">
+    <keybind key="W-F2">
       <action name="Execute">
         <command>pactl set-sink-volume @DEFAULT_SINK@ -1%</command>
       </action>
     </keybind>
-    <keybind key="F1">
+    <keybind key="W-F1">
       <action name="Execute">
         <command>pactl set-sink-mute @DEFAULT_SINK@ toggle</command>
       </action>
@@ -293,7 +293,7 @@
     </keybind>
     <keybind key="W-S-x">
       <action name="Execute">
-        <command>pkill ffmpeg</command>
+        <command>blaze -s</command>
       </action>
     </keybind>
     <keybind key="W-S-r">
